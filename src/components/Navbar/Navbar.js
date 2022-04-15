@@ -29,9 +29,9 @@ const Navbar = () => {
 
     return (
         <AppBar className={classes.appBar} position='static' color='inherit'>
-            <div className={classes.brandContainer}>
-            <Typography className={classes.heading} component={Link} to='/' variant='h2' align='center'>Memories</Typography>
-            </div>
+            <Link to='/' className={classes.brandContainer}>
+                <Typography className={classes.heading} variant='h2' align='center'>Memories</Typography>
+            </Link>
             <Toolbar className={classes.toolbar}>
                 {user ? (
                     <div className={classes.profile}>

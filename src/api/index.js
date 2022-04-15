@@ -9,11 +9,12 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
-export const fetchPosts = () => axios.get('/posts');
-export const createPost = (newPost) => axios.post('/posts', newPost);
-export const updatePost = (id, updatedPost) => axios.patch(`/posts/${id}`, updatedPost);
-export const deletePost = (id) => axios.delete(`/posts/${id}`);
-export const likePost = (id) => axios.patch(`/posts/${id}/likePost`);
+export const fetchPosts = (page) => API.get(`/posts?page=${page}`);
+export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'} &tags=${searchQuery.tags}`);
+export const createPost = (newPost) => API.post('/posts', newPost);
+export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
+export const deletePost = (id) => API.delete(`/posts/${id}`);
+export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
