@@ -27,6 +27,6 @@ export default (state = { isLoading: true, posts: []}, action) => {
         case CREATE:
             return { ...state, posts: [...state, action.payload]};
         default:
-            return posts;
+            return state;
     }
 }

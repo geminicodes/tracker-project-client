@@ -15,7 +15,7 @@ const Auth = () => {
     const classes = useStyles();
     const { showPassword, setShowPassword} = useState(false);
     const [isSignup, setIsSignup] = useState(false);
-    const [formData, setFormDatata] = useState(initialState);
+    const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -23,7 +23,7 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(isSignUp) {
+        if(isSignup) {
             dispatch(signup(formData, history))
         } else {
             dispatch(signin(formData, history))
@@ -39,7 +39,7 @@ const Auth = () => {
         setShowPassword(false)
     }
 
-    const googleSuccess = async () => {
+    const googleSuccess = async (res) => {
         const result = res?.profileObj;
         const token = res?.tokenId;
 
