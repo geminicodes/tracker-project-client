@@ -2,7 +2,6 @@ import React from 'react';
 import { Container } from '@material-ui/core';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import JobDetails from './components/JobDetails/JobDetails';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
@@ -18,7 +17,6 @@ const App = () => {
           <Route path="/" exact component={() => <Redirect to="/jobs" />} />
           <Route path="/jobs" exact component={Home} />
           <Route path="/jobs/search" exact component={Home} />
-          <Route path="/jobs/:id" exact component={JobDetails} />
           <Route path="/auth" exact component={() => (!user ? <Auth /> : <Redirect to="/jobs" />)} />
         </Switch>
       </Container>

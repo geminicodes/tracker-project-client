@@ -66,4 +66,9 @@ export default makeStyles((theme) => ({
   actionDiv: {
     textAlign: 'center',
   },
+  isLoading: {
+    textAlign: 'center',
+    paddingTop: '6rem',
+    paddingBottom: '6rem',
+  }
 }));

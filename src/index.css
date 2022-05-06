@@ -1,8 +1,12 @@
 body {
-    background-color: #f7f8fc;
+    /* level 1 color */
+    background-color: #13151a;
+    margin: 0;
 }
 
 * {
     /* font-family: 'Noto Sans JP' !important; */
     font-family: 'Heebo', sans-serif !important;
+    margin: 0;
+    color: #f2efda;
 }

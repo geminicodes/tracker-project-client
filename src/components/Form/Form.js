@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 //import FileBase from 'react-file-base64';
 import { useHistory } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input';
+import ClearIcon from '@material-ui/icons/Clear';
 
 import { createJob, updateJob } from '../../actions/jobs';
 import useStyles from './styles';
 
 const Form = ({ currentId, setCurrentId }) => {
-  const [jobData, setJobData] = useState({ title: '', companyName: '', jobUrl: '', status: '', notes: '', tags: [] });
+  const [jobData, setJobData] = useState({ title: '', companyName: '', jobUrl: '', status: '', tags: [] });
   const job = useSelector((state) => (currentId ? state.jobs.jobs.find((message) => message._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -18,7 +19,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const clear = () => {
     setCurrentId(0);
-    setJobData({ title: '', companyName: '', jobUrl: '', status: '', notes: '', tags: [], });
+    setJobData({ title: '', companyName: '', jobUrl: '', status: '', tags: [], });
   };
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <Paper className={classes.paper} elevation={6}>
         <Typography variant="h6" align="center">
-          Sign In to track your job search.
+          Sign In to search, add and edit your jobs.
         </Typography>
       </Paper>
     );
@@ -59,12 +60,12 @@ const Form = ({ currentId, setCurrentId }) => {
   return (
     <Paper className={classes.paper} elevation={6}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Editing "${job?.title}"` : 'Creating a Job'}</Typography>
-        <TextField name="title" variant="outlined" label="Title" fullWidth value={jobData.title} onChange={(e) => setJobData({ ...jobData, title: e.target.value })} />
-        <TextField name="companyName" variant="outlined" label="Company Name" fullWidth value={jobData.companyName} onChange={(e) => setJobData({ ...jobData, companyName: e.target.value })} />
-        <TextField name="jobUrl" variant="outlined" label="Job Url" fullWidth value={jobData.jobUrl} onChange={(e) => setJobData({ ...jobData, jobUrl: e.target.value })} />
-        <TextField name="status" variant="outlined" label="Application Status" fullWidth value={jobData.status} onChange={(e) => setJobData({ ...jobData, status: e.target.value })} />
-        <TextField name="notes" variant="outlined" label="Notes" fullWidth multiline rows={4} value={jobData.notes} onChange={(e) => setJobData({ ...jobData, notes: e.target.value })} />
+        <Typography variant="h6">{currentId ? `Edit "${job?.title}"` : 'Add Job'}</Typography>
+        <Button className={`${classes.buttonSubmit} ${classes.root}`} variant="contained" size="large" onClick={clear} fullWidth><ClearIcon /></Button>
+        <TextField name="title" className={`${classes.textfield} ${classes.root}`} variant="outlined" label="Title" fullWidth value={jobData.title} onChange={(e) => setJobData({ ...jobData, title: e.target.value })} />
+        <TextField name="companyName" className={`${classes.textfield} ${classes.root}`} variant="outlined" label="Company Name" fullWidth value={jobData.companyName} onChange={(e) => setJobData({ ...jobData, companyName: e.target.value })} />
+        <TextField name="jobUrl" className={`${classes.textfield} ${classes.root}`} variant="outlined" label="Job Url" fullWidth value={jobData.jobUrl} onChange={(e) => setJobData({ ...jobData, jobUrl: e.target.value })} />
+        <TextField name="status" className={`${classes.textfield} ${classes.root}`} variant="outlined" label="Application Status" fullWidth value={jobData.status} onChange={(e) => setJobData({ ...jobData, status: e.target.value })} />
         <div style={{ padding: '5px 0', width: '94%' }}>
           <ChipInput
             name="tags"
@@ -74,10 +75,10 @@ const Form = ({ currentId, setCurrentId }) => {
             value={jobData.tags}
             onAdd={(chip) => handleAddChip(chip)}
             onDelete={(chip) => handleDeleteChip(chip)}
+            className={`${classes.textfield} ${classes.root}`}
           />
         </div>
-        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+        <Button className={`${classes.buttonSubmit} ${classes.root}`} variant="contained" size="large" type="submit" fullWidth>Submit</Button>
       </form>
     </Paper>
   );

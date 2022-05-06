@@ -1,4 +1,4 @@
-import { FETCH_ALL, FETCH_BY_SEARCH, FETCH_JOB, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
+import { FETCH_ALL, FETCH_BY_SEARCH, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
 
 export default (state = { isLoading: true, jobs: [] }, action) => {
   switch (action.type) {
@@ -15,8 +15,6 @@ export default (state = { isLoading: true, jobs: [] }, action) => {
       };
     case FETCH_BY_SEARCH:
       return { ...state, jobs: action.payload.data };
-    case FETCH_JOB:
-      return { ...state, job: action.payload.job };
     case LIKE:
       return { ...state, jobs: state.jobs.map((job) => (job._id === action.payload._id ? action.payload : job)) };
     case CREATE:
