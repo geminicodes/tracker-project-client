@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/jobs/search" exact component={Home} />
           <Route path="/auth" exact component={() => (!user ? <Auth /> : <Redirect to="/jobs" />)} />
         </Switch>
+        <Footer />
       </Container>
     </BrowserRouter>
   );

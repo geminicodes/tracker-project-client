@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom';
 
-//import { getPost, likePost, deletePost } from '../../../actions/posts';
 import { likeJob, deleteJob } from '../../../actions/jobs';
 import useStyles from './styles';
 

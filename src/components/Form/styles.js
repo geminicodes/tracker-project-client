@@ -24,6 +24,7 @@ export default makeStyles((theme) => ({
     /* level 2 color */
     backgroundColor: '#262b33',
     borderRadius: 12,
+    marginBottom: '10px',
   },
   form: {
     display: 'flex', 
